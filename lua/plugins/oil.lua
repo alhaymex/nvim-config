@@ -15,7 +15,13 @@ return {
         },
       })
 
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      vim.keymap.set("n", "<leader>e", function()
+        if vim.bo.filetype == "oil" then
+          require("oil").close()
+        else
+          require("oil").open()
+        end
+      end, { desc = "Toggle Oil" })
 
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
