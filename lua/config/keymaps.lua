@@ -23,3 +23,8 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 
 map("v", "<", "<gv", { desc = "Indent left and keep selection" })
 map("v", ">", ">gv", { desc = "Indent right and keep selection" })
+
+map({ "n", "v" }, "<leader>f", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format buffer or selection" })
+
